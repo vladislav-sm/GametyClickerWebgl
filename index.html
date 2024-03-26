@@ -81,10 +81,9 @@
       // config.matchWebGLToCanvasSize = false;
 
       if (!(/iPhone|iPad|iPod|Android|webOS|Opera Mini/i.test(navigator.userAgent))) {
-      // if (true) {
         unityShowBanner('Your device is not supported.\nPlease switch to a mobile device', 'error');
       } else {
-        // Telegram.WebApp.expand();
+        Telegram.WebApp.expand();
 
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
