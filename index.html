@@ -82,10 +82,8 @@
       // config.matchWebGLToCanvasSize = false;
 
       const platform = Telegram?.WebApp?.platform
-      logo.insertAdjacentHTML('beforebegin', `<p>${ platform || 'no platform' }</p>`);
 
-      if (!(/iPhone|iPad|iPod|Android|webOS|Opera Mini/i.test(navigator.userAgent))) {
-      // if (false) {
+      if (platform === 'android' || platform === 'iphone') {
         unityShowBanner('Your device is not supported.\nPlease switch to a mobile device', 'error');
       } else {
         Telegram.WebApp.expand();
