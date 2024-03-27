@@ -83,7 +83,7 @@
 
       const platform = Telegram?.WebApp?.platform
 
-      if (!(platform === 'android' || platform === 'iphone')) {
+      if (!(platform === 'android' || platform === 'ios')) {
         unityShowBanner('Your device is not supported.\nPlease switch to a mobile device', 'error');
       } else {
         Telegram.WebApp.expand();
