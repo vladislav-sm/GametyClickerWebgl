@@ -81,6 +81,23 @@
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
 
+      function loadUnity() {
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {
+            progressBarFull.style.width = 100 * progress + "%";
+          }).then((unityInstance) => {
+            loadingBar.style.display = "none";
+            logo.style.display = "none";
+          }).catch((message) => {
+            alert(message);
+          });
+        };
+
+        document.body.appendChild(script);
+      }
+
       const platform = Telegram?.WebApp?.platform
 
       if (!(platform === 'android' || platform === 'ios')) {
@@ -96,24 +113,22 @@
 
         loadingBar.style.display = "block";
 
-        var script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = () => {
-          createUnityInstance(canvas, config, (progress) => {
-            progressBarFull.style.width = 100 * progress + "%";
-          }).then((unityInstance) => {
-            loadingBar.style.display = "none";
-            logo.style.display = "none";
-          }).catch((message) => {
-            alert(message);
+        indexedDB.databases().then(dbs => {
+          const promises = dbs.map(db => {
+            return new Promise((resolve, reject) => {
+              console.log(db)
+              const req = indexedDB.deleteDatabase(db.name);
+              req.onsuccess = resolve;
+              req.onerror = reject;
+              req.onblocked = reject;
+            });
           });
-        };
-
-        document.body.appendChild(script);
+          Promise.all(promises).then(loadUnity).catch(console.error);
+        })
 
         window.getUserData = function () {
-          return window.Telegram.WebApp.initData
-        }
+          return window.Telegram.WebApp.initData;
+        };
       }
     </script>
   </body>
