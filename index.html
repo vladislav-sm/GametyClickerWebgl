@@ -6,7 +6,6 @@
     <title>Unity WebGL Player | Gamety Clicker</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="manifest" href="manifest.webmanifest">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
@@ -116,7 +115,6 @@
         indexedDB.databases().then(dbs => {
           const promises = dbs.map(db => {
             return new Promise((resolve, reject) => {
-              console.log(db)
               const req = indexedDB.deleteDatabase(db.name);
               req.onsuccess = resolve;
               req.onerror = reject;
