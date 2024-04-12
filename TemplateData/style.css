@@ -23,18 +23,23 @@ body {
 }
 
 #unity-loading-bar {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
     display: none
 }
 
 #unity-logo {
-    margin: 60px auto;
-    width: 292px;
+    margin: 60px auto 30px;
     height: 26px;
+    width: 292px;
     background: url('gamety-title.png') no-repeat center
+}
+
+#logo {
+    margin: 30px auto;
+    width: 386px;
+    height: 176px;
+    max-width: 80%;
+    background: url('logo.svg') no-repeat center / contain
 }
 
 #unity-progress-bar-empty {
@@ -54,10 +59,7 @@ body {
 }
 
 #unity-warning {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
     display: none;
     white-space: pre-line;
     text-align: center;
