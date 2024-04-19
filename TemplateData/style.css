@@ -27,15 +27,8 @@ body {
     display: none
 }
 
-#unity-logo {
-    margin: 60px auto 30px;
-    height: 26px;
-    width: 292px;
-    background: url('gamety-title.png') no-repeat center
-}
-
 #logo {
-    margin: 30px auto;
+    margin: 130px auto;
     width: 386px;
     height: 176px;
     max-width: 80%;
